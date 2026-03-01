@@ -35,7 +35,7 @@ export default function Audio() {
       setLoading(true);
       setAiReply(""); // Clear previous reply
 
-      const res = await axios.post("http://localhost:8000/chat", {
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/chat`, {
         message: text,
         return_audio: true  // Request audio from backend
       });
