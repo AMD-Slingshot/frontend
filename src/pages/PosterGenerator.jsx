@@ -47,7 +47,7 @@ export default function PosterGenerator() {
       audioRef.current = null;
     }
     try {
-      const response = await axios.post("http://localhost:8000/api/poster/generate-poster", formData);
+      const response = await axios.post(import.meta.env.VITE_API_BASE_URL + "/api/poster/generate-poster", formData);
       setResult(response.data);
     } catch (error) {
       alert(error.response?.data?.detail || "Failed to generate poster.");

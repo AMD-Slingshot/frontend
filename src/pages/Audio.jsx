@@ -33,28 +33,25 @@ export default function Audio() {
   const sendToBackend = async (text) => {
     try {
       setLoading(true);
-      setAiReply(""); // Clear previous reply
+      setAiReply(""); 
 
       const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/chat`, {
         message: text,
-        return_audio: true  // Request audio from backend
+        return_audio: true  
       });
 
       const reply = res.data.reply;
       setAiReply(reply);
 
-      // Play audio from backend if available
       if (res.data.audio_url) {
         const audioPlayer = new window.Audio(res.data.audio_url);
         audioPlayer.play().catch(err => {
           console.error("Audio playback failed:", err);
-          // Fallback to browser TTS if audio fails
           const speech = new SpeechSynthesisUtterance(reply);
           speech.lang = "en-US";
           window.speechSynthesis.speak(speech);
         });
       } else {
-        // Fallback to browser TTS if no audio URL
         const speech = new SpeechSynthesisUtterance(reply);
         speech.lang = "en-US";
         window.speechSynthesis.speak(speech);
@@ -63,14 +60,12 @@ export default function Audio() {
     } catch (error) {
       console.error(error);
       
-      // Display specific error message from backend
       let errorMessage = "Error connecting to backend";
       
       if (error.response) {
-        // Backend responded with an error
         errorMessage = error.response.data.detail || `Server error: ${error.response.status}`;
       } else if (error.request) {
-        // Request was made but no response
+        
         errorMessage = "No response from server. Make sure the backend is running.";
       }
       
