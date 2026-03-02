@@ -113,8 +113,8 @@ export default function PosterGenerator() {
           <section className="space-y-4">
              <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Time & Place</p>
              <div className="grid grid-cols-2 gap-3">
-                <input type="text" name="date" placeholder="March 15" value={formData.date} onChange={handleChange} className="bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm outline-none" />
-                <input type="text" name="time" placeholder="10:00 AM" value={formData.time} onChange={handleChange} className="bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm outline-none" />
+                <input type="date" name="date" placeholder="March 15" value={formData.date} onChange={handleChange} className="bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm outline-none" />
+                <input type="time" name="time" placeholder="10:00 AM" value={formData.time} onChange={handleChange} className="bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm outline-none" />
              </div>
              <input type="text" name="venue" placeholder="Venue Location" value={formData.venue} onChange={handleChange} className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm outline-none" />
           </section>
